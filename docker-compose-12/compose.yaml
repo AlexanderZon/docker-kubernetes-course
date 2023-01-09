@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  contenedor1:
+    image: image_restart
+    restart: unless-stopped
+  contenedor2:
+    image: image_restart
+    restart: always
+  contenedor3:
+    image: image_restart
+    restart: on-failure:2
+  contenedor4:
+    image: image_restart
+    restart: "no"

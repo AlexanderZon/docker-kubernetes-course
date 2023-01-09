@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  admin:
+    image: docker-engine:v7
+    networks:
+      - docker-swarm-test
+    command: ["systemd"]
+    
+  manager-1:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  manager-2:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  manager-3:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  node-1:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  node-2:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  node-3:
+    image: docker-engine:v6
+    tty: true
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+  node-4:
+    image: docker-engine:v6
+    networks:
+      - docker-swarm-test
+    command: ["/usr/local/bin/init.sh"]
+networks:
+  docker-swarm-test:
