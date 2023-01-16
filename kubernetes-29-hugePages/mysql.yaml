@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: database
+  labels:
+    name: database
+spec:
+  containers:
+  - name: database
+    image: mysql:latest
+    ports:
+    - containerPort: 3306
+      name: db-port
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: kubernetes
+    - name: MYSQL_USER
+      value: usudb
+    - name: MYSQL_PASSWORD
+      value: usupass
+    - name: MYSQL_DATABASE
+      value: kubernetes
+    volumeMounts:
+    - mountPath: /hugepages-2Mi
+      name: hugepage-2mi
+    - mountPath: /hugepages-1Gi
+      name: hugepage-1gi
+    resources:
+      limits:
+        hugepages-2Mi: 100Mi
+        hugepages-1Gi: 2Gi
+        memory: 200Mi
+        cpu: "1"
+      requests:
+        memory: "100Mi"
+        cpu: "0.5"
+  volumes:
+    - name: hugepage-2mi
+      emptyDir:
+        medium: HugePages-2Mi
+    - name: hugepage-1gi
+      emptyDir:
+        medium: HugePages-1Gi
+
