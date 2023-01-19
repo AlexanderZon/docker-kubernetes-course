@@ -13,5 +13,5 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: mysql
   nfs:
-    path: /home/kubernetes/datos/mysql
-    server: 192.168.174.138
+    path: /home/alexis_montenegro_sistemas/kubernetes/volumes/mysql
+    server: 10.182.0.2

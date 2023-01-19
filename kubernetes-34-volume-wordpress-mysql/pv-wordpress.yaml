@@ -13,5 +13,5 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
   storageClassName: wordpress
   nfs:
-    path: /home/kubernetes/datos/wordpress
-    server: 192.168.174.138
+    path: /home/alexis_montenegro_sistemas/kubernetes/volumes/wordpress
+    server: 10.182.0.2
