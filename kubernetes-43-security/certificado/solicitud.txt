@@ -1,0 +1,16 @@
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: desa-req-auth
+spec:
+  signerName: "tec4web.com.br/alexis"
+  groups: 
+  - system:authenticated
+  request: $(cat desa1.csr | base64 | tr -d '\n')
+  usages:
+  - digital signature
+  - key encipherment
+  - server auth
+  - client auth 
+EOF
